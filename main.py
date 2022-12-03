@@ -292,8 +292,12 @@ if __name__ == '__main__':
                         else:
                             if 'botNa' in replyssssss:
                                 replyssssss = replyssssss.replace("botNa", botName)
+                            else:
+                                pass
                             if 'name' in replyssssss:
                                 replyssssss = replyssssss.replace("name", str(event.sender.member_name))
+                            else:
+                                pass
                             if '哥哥' in replyssssss:
                                 replyssssss = replyssssss.replace("哥哥", str(event.sender.member_name))
                             else:
@@ -322,8 +326,12 @@ if __name__ == '__main__':
                             else:
                                 if 'botNa' in replyssssss:
                                     replyssssss=replyssssss.replace("botNa", botName)
+                                else:
+                                    pass
                                 if 'name' in replyssssss:
                                     replyssssss = replyssssss.replace("name", str(event.sender.member_name))
+                                else:
+                                    pass
                                 if '哥哥' in replyssssss:
                                     replyssssss = replyssssss.replace("哥哥", str(event.sender.member_name))
                                 else:

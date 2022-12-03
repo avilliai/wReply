@@ -1,9 +1,9 @@
 # wReply
 从外部导入词库
 # 需要
-  python环境
+  python环境(我用的3.9.0)
   
-  mirai-api-http
+  [mirai-api-http](https://github.com/project-mirai/mirai-api-http)
 # how to use
   1.克隆仓库到本地
   

@@ -2,6 +2,7 @@
 从外部导入词库
 # 需要
   python环境
+  
   mirai-api-http
 # how to use
   1.克隆仓库到本地
@@ -28,4 +29,5 @@
   del#key
   
   *添加语音回复*
+  
   详见另一个帖子

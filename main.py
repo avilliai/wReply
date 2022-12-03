@@ -509,10 +509,10 @@ if __name__ == '__main__':
         if mohudelete == 1:
             if event.sender.id == mohudelsender:
                 global mohukey
-                replyMes = superDict.get(key)
+                replyMes = superDict.get(mohukey)
                 try:
                     del replyMes[int(str(event.message_chain))]
-                    superDict = mohuadd(key, replyMes)
+                    superDict = mohuadd(mohukey, replyMes)
                     mohudelete = 0
                     await bot.send(event, '已删除')
                 except:

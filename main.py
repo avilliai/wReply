@@ -290,16 +290,20 @@ if __name__ == '__main__':
                         elif str(replyssssss).endswith('.wav'):
                             await bot.send(event, Voice(path='plugins\\voices\\' + replyssssss))
                         else:
-                            if 'botNa' in replyssssss:
-                                replyssssss = replyssssss.replace("botNa", botName)
+                            if '{me}' in replyssssss:
+                                replyssssss = replyssssss.replace("{me}", botName)
                             else:
                                 pass
-                            if 'name' in replyssssss:
-                                replyssssss = replyssssss.replace("name", str(event.sender.member_name))
+                            if '{name}' in replyssssss:
+                                replyssssss = replyssssss.replace("{name}", str(event.sender.member_name))
                             else:
                                 pass
                             if '哥哥' in replyssssss:
                                 replyssssss = replyssssss.replace("哥哥", str(event.sender.member_name))
+                            else:
+                                pass
+                            if '{segment}' in replyssssss:
+                                replyssssss=replyssssss.replace("{segment}",',')
                             else:
                                 pass
                             await bot.send(event, replyssssss)
@@ -324,16 +328,20 @@ if __name__ == '__main__':
                             elif str(replyssssss).endswith('.wav'):
                                 await bot.send(event, Voice(path='plugins\\voices\\' + replyssssss))
                             else:
-                                if 'botNa' in replyssssss:
-                                    replyssssss=replyssssss.replace("botNa", botName)
+                                if '{me}' in replyssssss:
+                                    replyssssss = replyssssss.replace("{me}", botName)
                                 else:
                                     pass
-                                if 'name' in replyssssss:
-                                    replyssssss = replyssssss.replace("name", str(event.sender.member_name))
+                                if '{name}' in replyssssss:
+                                    replyssssss = replyssssss.replace("{name}", str(event.sender.member_name))
                                 else:
                                     pass
                                 if '哥哥' in replyssssss:
                                     replyssssss = replyssssss.replace("哥哥", str(event.sender.member_name))
+                                else:
+                                    pass
+                                if '{segment}' in replyssssss:
+                                    replyssssss = replyssssss.replace("{segment}", ',')
                                 else:
                                     pass
                                 await bot.send(event, replyssssss)
@@ -342,7 +350,7 @@ if __name__ == '__main__':
 
 
     # 取消注释开放私聊
-    '''@bot.on(FriendMessage)
+    @bot.on(FriendMessage)
     async def mohu(event: FriendMessage):
         global mohuKeys
         global superDict
@@ -362,18 +370,26 @@ if __name__ == '__main__':
                     elif str(replyssssss).endswith('.wav'):
                         await bot.send(event, Voice(path='plugins\\voices\\' + replyssssss))
                     else:
-                        if 'botNa' in replyssssss:
-                            replyssssss = replyssssss.replace("botNa", botName)
-                        if 'name' in replyssssss:
-                            replyssssss = replyssssss.replace("name", str(event.sender.get_name()))
+                        if '{me}' in replyssssss:
+                            replyssssss = replyssssss.replace("{me}", botName)
+                        else:
+                            pass
+                        if '{name}' in replyssssss:
+                            replyssssss = replyssssss.replace("{name}", str(event.sender.get_name()))
+                        else:
+                            pass
                         if '哥哥' in replyssssss:
                             replyssssss = replyssssss.replace("哥哥", str(event.sender.get_name()))
+                        else:
+                            pass
+                        if '{segment}' in replyssssss:
+                            replyssssss = replyssssss.replace("{segment}", ',')
                         else:
                             pass
                         await bot.send(event, replyssssss)
                     return
             # 没有匹配的词
-            likeindex = likeindex - 2'''
+            likeindex = likeindex - 2
 
 
 

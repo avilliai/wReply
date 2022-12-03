@@ -21,12 +21,12 @@ def importDict():
 
     all_row_dict = []
     #当你需要向已有词库导入时取消注释
-    '''fileaa = open('Config\\superDict.txt', 'r')
+    fileaa = open('Config\\superDict.txt', 'r')
     js1 = fileaa.read()
     newDict = json.loads(js1)
-    print('已读取现存字典')'''
+    print('已读取现存字典')
     #新建词库，当你需要向已有词库导入时，注释下面这一行
-    newDict={}
+    #newDict={}
     # 遍历出除了第一行的其他行
     for a_row in rows_data:
         the_row_data = [cell.value for cell in a_row]

@@ -13,6 +13,9 @@
   
   3.运行main.py
 # 指令如下
+
+  key是你要操作的关键词
+  
   **更新词库的方式**
   
   把新的词库文件改名(格式指定为xlsx)为词库.xlsx,放在Config文件下，运行superDict.py

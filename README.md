@@ -6,7 +6,9 @@
   mirai-api-http
 # how to use
   1.克隆仓库到本地
+  
   2.打开cmd，运行pip install -r requirements.txt
+  
   3.运行main.py
 # 指令如下
   **更新词库**

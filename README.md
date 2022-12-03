@@ -18,7 +18,7 @@
   
   **更新词库的方式**
   
-  把新的词库文件改名(格式指定为xlsx)为词库.xlsx,放在Config文件下，运行superDict.py
+  把新的词库文件重命名(格式指定为xlsx)为词库.xlsx,放在Config文件下，运行superDict.py
   
   如果是向已有词库中添加请直接运行superDict.py，希望新建词库详见注释
   

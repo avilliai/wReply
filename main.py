@@ -51,7 +51,7 @@ if __name__ == '__main__':
     mohudelsender = 0
 
     #添加语音回复详见我的另一个帖子
-    '''@bot.on(GroupMessage)
+    @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
         if str(event.message_chain) == '添加语音':
             global sendera
@@ -60,7 +60,7 @@ if __name__ == '__main__':
             global status
             status = 1
             global voiceMode
-            voiceMode = 1'''
+            voiceMode = 1
 
 
     @bot.on(GroupMessage)

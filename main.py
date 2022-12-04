@@ -9,6 +9,7 @@ from mirai import Mirai, WebSocketAdapter, FriendMessage, GroupMessage, At, Plai
 from dictPicDown import dict_download_img
 from easyReply import addReplys, dels, add
 from mohuReply import mohudels, mohuaddReplys, mohuadd
+from readConfig import readConfig
 
 if __name__ == '__main__':
 
@@ -28,8 +29,14 @@ if __name__ == '__main__':
     superDict = json.loads(jss)
     mohuKeys = superDict.keys()
     print('已读取模糊匹配字典')
+
+    trustUser = readConfig(r"Config\user.txt")
+    print('已读取信任用户')
+
     #修改为你bot的名字
     botName = '我'
+    #你的QQ
+    master=str(1840094972)
     #过滤词库
     ban = ['妈', '主人', '狗', '老公', '老婆', '爸', '奶', '爷', '党', '爹', 'b', '逼', '牛', '国', '批']
     # 不回复的几率
@@ -69,11 +76,14 @@ if __name__ == '__main__':
     @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
         if str(event.message_chain) == '开始添加':
-            global sendera
-            sendera = event.sender.id
-            await bot.send(event, '请输入关键词')
-            global status
-            status = 1
+            if str(event.sender.id) in trustUser:
+                global sendera
+                sendera = event.sender.id
+                await bot.send(event, '请输入关键词')
+                global status
+                status = 1
+            else:
+                await bot.send(event,event.sender.member_name+'没有添加的权限哦....')
 
 
     @bot.on(GroupMessage)
@@ -143,23 +153,29 @@ if __name__ == '__main__':
     @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
         if str(event.message_chain) == '模糊语音':
-            global mohusendera
-            mohusendera = event.sender.id
-            await bot.send(event, '请输入关键词')
-            global mohustatus
-            mohustatus = 1
-            global mohuvoiceMode
-            mohuvoiceMode = 1
+            if str(event.sender.id) in trustUser:
+                global mohusendera
+                mohusendera = event.sender.id
+                await bot.send(event, '请输入关键词')
+                global mohustatus
+                mohustatus = 1
+                global mohuvoiceMode
+                mohuvoiceMode = 1
+            else:
+                await bot.send(event,botName+'和您不是很熟呢....')
 
 
     @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
         if str(event.message_chain) == '模糊添加':
-            global mohusendera
-            mohusendera = event.sender.id
-            await bot.send(event, '请输入关键词')
-            global mohustatus
-            mohustatus = 1
+            if str(event.sender.id) in trustUser:
+                global mohusendera
+                mohusendera = event.sender.id
+                await bot.send(event, '请输入关键词')
+                global mohustatus
+                mohustatus = 1
+            else:
+                await bot.send(event,event.sender.member_name+'没有添加的权限哦....')
 
 
     @bot.on(GroupMessage)
@@ -407,63 +423,72 @@ if __name__ == '__main__':
     @bot.on(GroupMessage)
     async def dele(event: GroupMessage):
         if str(event.message_chain).startswith('删除'):
-            # 调用词库删除函数
-            try:
-                if event.message_chain.count(Image) == 1:
-                    lst_img = event.message_chain.get(Image)
-                    key = lst_img[0].url
-                else:
-                    key = str(event.message_chain)
-                s = dels(key)
-                global dict
-                dict = s
-                await bot.send(event, '已删除关键词：' + (str(event.message_chain)[2:]))
-            except:
-                pass
+            if str(event.sender.id) in trustUser:
+                # 调用词库删除函数
+                try:
+                    if event.message_chain.count(Image) == 1:
+                        lst_img = event.message_chain.get(Image)
+                        key = lst_img[0].url
+                    else:
+                        key = str(event.message_chain)
+                    s = dels(key)
+                    global dict
+                    dict = s
+                    await bot.send(event, '已删除关键词：' + (str(event.message_chain)[2:]))
+                except:
+                    pass
+            else:
+                await bot.send(event,event.sender.member_name+'似乎没有删除的权限呢...')
         if str(event.message_chain).startswith('模糊删除'):
-            # 调用词库删除函数
-            try:
-                if event.message_chain.count(Image) == 1:
-                    lst_img = event.message_chain.get(Image)
-                    key = lst_img[0].url
-                else:
-                    key = str(event.message_chain)
-                s = mohudels(key)
-                global superDict
-                superDict = s
-                await bot.send(event, '已删除关键词：' + (str(event.message_chain)[4:]))
-                global mohuKeys
-                mohuKeys = superDict.keys()
-            except:
-                pass
+            if str(event.sender.id) in trustUser:
+                # 调用词库删除函数
+                try:
+                    if event.message_chain.count(Image) == 1:
+                        lst_img = event.message_chain.get(Image)
+                        key = lst_img[0].url
+                    else:
+                        key = str(event.message_chain)
+                    s = mohudels(key)
+                    global superDict
+                    superDict = s
+                    await bot.send(event, '已删除关键词：' + (str(event.message_chain)[4:]))
+                    global mohuKeys
+                    mohuKeys = superDict.keys()
+                except:
+                    pass
+            else:
+                await bot.send(event, event.sender.member_name + '似乎没有删除的权限呢...')
 
 
     # 删除回复value
     @bot.on(GroupMessage)
     async def dele(event: GroupMessage):
         if str(event.message_chain).startswith('del#'):
-            s1 = str(event.message_chain).split('#')
-            aimStr = s1[1]
-            global dict
-            if aimStr in dict.keys():
-                replyMes = dict.get(aimStr)
-                number = 0
-                for i in replyMes:
-                    await bot.send(event, '编号:' + str(number))
-                    number += 1
-                    if i.endswith('.png'):
-                        await bot.send(event, Image(path='pictures\\dictPic\\' + i))
-                    elif i.endswith('.wav'):
-                        await bot.send(event, Voice(path='plugins\\voices\\' + i))
-                    else:
-                        await bot.send(event, i)
-                global delete
-                global delsender
-                global key
-                key = aimStr
-                delsender = event.sender.id
-                delete = 1
-                await bot.send(event, '请发送要删除的序号')
+            if str(event.sender.id) in trustUser:
+                s1 = str(event.message_chain).split('#')
+                aimStr = s1[1]
+                global dict
+                if aimStr in dict.keys():
+                    replyMes = dict.get(aimStr)
+                    number = 0
+                    for i in replyMes:
+                        await bot.send(event, '编号:' + str(number))
+                        number += 1
+                        if i.endswith('.png'):
+                            await bot.send(event, Image(path='pictures\\dictPic\\' + i))
+                        elif i.endswith('.wav'):
+                            await bot.send(event, Voice(path='plugins\\voices\\' + i))
+                        else:
+                            await bot.send(event, i)
+                    global delete
+                    global delsender
+                    global key
+                    key = aimStr
+                    delsender = event.sender.id
+                    delete = 1
+                    await bot.send(event, '请发送要删除的序号')
+            else:
+                await bot.send(event, event.sender.member_name + '似乎没有删除的权限呢...')
     # 删除指定下标执行部分
     @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
@@ -487,28 +512,31 @@ if __name__ == '__main__':
     @bot.on(GroupMessage)
     async def dele(event: GroupMessage):
         if str(event.message_chain).startswith('Mel#'):
-            s1 = str(event.message_chain).split('#')
-            aimStr = s1[1]
-            global superDict
-            if aimStr in superDict.keys():
-                replyMes = superDict.get(aimStr)
-                number = 0
-                for i in replyMes:
-                    await bot.send(event, '编号:' + str(number))
-                    number += 1
-                    if i.endswith('.png'):
-                        await bot.send(event, Image(path='pictures\\dictPic\\' + i))
-                    elif i.endswith('.wav'):
-                        await bot.send(event, Voice(path='plugins\\voices\\' + i))
-                    else:
-                        await bot.send(event, i)
-                global mohudelete
-                global mohudelsender
-                global mohukey
-                mohukey = aimStr
-                mohudelsender = event.sender.id
-                mohudelete = 1
-                await bot.send(event, '请发送要删除的序号')
+            if str(event.sender.id) in trustUser:
+                s1 = str(event.message_chain).split('#')
+                aimStr = s1[1]
+                global superDict
+                if aimStr in superDict.keys():
+                    replyMes = superDict.get(aimStr)
+                    number = 0
+                    for i in replyMes:
+                        await bot.send(event, '编号:' + str(number))
+                        number += 1
+                        if i.endswith('.png'):
+                            await bot.send(event, Image(path='pictures\\dictPic\\' + i))
+                        elif i.endswith('.wav'):
+                            await bot.send(event, Voice(path='plugins\\voices\\' + i))
+                        else:
+                            await bot.send(event, i)
+                    global mohudelete
+                    global mohudelsender
+                    global mohukey
+                    mohukey = aimStr
+                    mohudelsender = event.sender.id
+                    mohudelete = 1
+                    await bot.send(event, '请发送要删除的序号')
+            else:
+                await bot.send(event, event.sender.member_name + '似乎没有删除的权限呢...')
 
     # 删除指定下标执行部分
     @bot.on(GroupMessage)
@@ -528,5 +556,19 @@ if __name__ == '__main__':
                 except:
                     mohudelete = 0
                     await bot.send(event, '下标不合法')
+
+    # 追加推送群聊
+    @bot.on(GroupMessage)
+    async def addGroup(event: GroupMessage):
+        if str(event.message_chain).startswith('授权#'):
+            if str(event.sender.id)==master:
+                s = str(event.message_chain).split('#')
+                with open('Config\\user.txt', 'a') as file:
+                    file.write('\n' + s[1])
+                await bot.send(event, '已更新受信任用户')
+                global trustUser
+                trustUser = readConfig(r"Config\user.txt")
+            else:
+                await bot.send(event,event.sender.member_name+'不是'+botName+'的master哦')
 
     bot.run()

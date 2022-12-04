@@ -571,4 +571,30 @@ if __name__ == '__main__':
             else:
                 await bot.send(event,event.sender.member_name+'不是'+botName+'的master哦')
 
+    # 追加推送群聊
+    @bot.on(GroupMessage)
+    async def addGroup(event: GroupMessage):
+        if str(event.message_chain).startswith('取消授权#'):
+            if str(event.sender.id) == master:
+                for i in trustUser:
+                    print(i)
+                s = str(event.message_chain).split('#')
+                if (s[1]+'\n') in trustUser:
+                    trustUser.remove(s[1]+'\n')
+                elif s[1] in trustUser:
+                    trustUser.remove(s[1])
+                elif ('\n'+s[1]) in trustUser:
+                    trustUser.remove('\n'+s[1])
+                else:
+                    await bot.send(event,'该用户无授权记录')
+                await bot.send(event, '已更新受信任用户')
+                print('-----------')
+                for i in trustUser:
+                    print(i)
+                with open('Config\\user.txt', 'w') as file:
+                    for i in trustUser:
+                        file.write(i)
+            else:
+                await bot.send(event, event.sender.member_name + '不是' + botName + '的master哦')
+
     bot.run()

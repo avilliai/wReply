@@ -12,7 +12,7 @@ from mohuReply import mohudels, mohuaddReplys, mohuadd
 
 if __name__ == '__main__':
 
-    bot = Mirai(3377428814, adapter=WebSocketAdapter(
+    bot = Mirai(3552663628, adapter=WebSocketAdapter(
         verify_key='1234567890', host='localhost', port=23456
     ))
 
@@ -28,10 +28,13 @@ if __name__ == '__main__':
     superDict = json.loads(jss)
     mohuKeys = superDict.keys()
     print('已读取模糊匹配字典')
-    #这一行填你bot的名字
+    #修改为你bot的名字
     botName = '我'
     #过滤词库
     ban = ['妈', '主人', '狗', '老公', '老婆', '爸', '奶', '爷', '党', '爹', 'b', '逼', '牛', '国', '批']
+    # 不回复的几率
+    replypro=90
+
     #下面的是一堆乱七八糟的变量
     key = ''
     value = ''
@@ -51,7 +54,7 @@ if __name__ == '__main__':
     mohudelsender = 0
 
     #添加语音回复详见我的另一个帖子
-    @bot.on(GroupMessage)
+    '''@bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
         if str(event.message_chain) == '添加语音':
             global sendera
@@ -60,7 +63,7 @@ if __name__ == '__main__':
             global status
             status = 1
             global voiceMode
-            voiceMode = 1
+            voiceMode = 1'''
 
 
     @bot.on(GroupMessage)
@@ -271,6 +274,7 @@ if __name__ == '__main__':
         global mohuKeys
         global superDict
         global botName
+        global replypro
         likeindex = 99#初始匹配相似度
         if At(bot.qq) in event.message_chain:
             getStr=str(event.message_chain).replace('@3377428814 ','')
@@ -317,7 +321,7 @@ if __name__ == '__main__':
             #设置回复几率
             if whetherReply > 86:
                 #最低相似度
-                while likeindex > 75:
+                while likeindex > replypro:
                     for i in mohuKeys:
                         # 获取本次循环中消息和词库相似度，用相似度作为key
                         likeM = fuzz.partial_ratio(str(event.message_chain), i)

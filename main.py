@@ -289,6 +289,8 @@ if __name__ == '__main__':
                             await bot.send(event, Image(path='pictures\\dictPic\\' + replyssssss))
                         elif str(replyssssss).endswith('.wav'):
                             await bot.send(event, Voice(path='plugins\\voices\\' + replyssssss))
+                        elif str(replyssssss).endswith('.gif'):
+                            await bot.send(event, Image(path='pictures\\dictPic\\' + replyssssss))
                         else:
                             if '{me}' in replyssssss:
                                 replyssssss = replyssssss.replace("{me}", botName)
@@ -327,6 +329,8 @@ if __name__ == '__main__':
                                 await bot.send(event, Image(path='pictures\\dictPic\\' + replyssssss))
                             elif str(replyssssss).endswith('.wav'):
                                 await bot.send(event, Voice(path='plugins\\voices\\' + replyssssss))
+                            elif str(replyssssss).endswith('.gif'):
+                                await bot.send(event, Image(path='pictures\\dictPic\\' + replyssssss))
                             else:
                                 if '{me}' in replyssssss:
                                     replyssssss = replyssssss.replace("{me}", botName)
@@ -350,7 +354,7 @@ if __name__ == '__main__':
 
 
     # 取消注释开放私聊
-    @bot.on(FriendMessage)
+    '''@bot.on(FriendMessage)
     async def mohu(event: FriendMessage):
         global mohuKeys
         global superDict
@@ -369,6 +373,8 @@ if __name__ == '__main__':
                         await bot.send(event, Image(path='pictures\\dictPic\\' + replyssssss))
                     elif str(replyssssss).endswith('.wav'):
                         await bot.send(event, Voice(path='plugins\\voices\\' + replyssssss))
+                    elif str(replyssssss).endswith('.gif'):
+                        await bot.send(event, Image(path='pictures\\dictPic\\' + replyssssss))
                     else:
                         if '{me}' in replyssssss:
                             replyssssss = replyssssss.replace("{me}", botName)
@@ -389,7 +395,7 @@ if __name__ == '__main__':
                         await bot.send(event, replyssssss)
                     return
             # 没有匹配的词
-            likeindex = likeindex - 2
+            likeindex = likeindex - 2'''
 
 
 

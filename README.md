@@ -11,7 +11,7 @@
   
   2.打开cmd，运行pip install -r requirements.txt
   
-  3.修改main.py中的qq,port,key   向下划拉能看到botName变量，改成你bot的名字
+  3.修改main.py中的qq,port,key   向下划拉能看到botName变量，改成你bot的名字，master改成你的QQ
   
   3.运行main.py
 # 指令如下
@@ -43,3 +43,7 @@
   *添加语音回复*
   
   详见另一个帖子
+  
+  **授权机制**
+  授权#qq
+  取消授权#qq

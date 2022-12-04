@@ -9,6 +9,7 @@ from mirai import Mirai, WebSocketAdapter, FriendMessage, GroupMessage, At, Plai
 from dictPicDown import dict_download_img
 from easyReply import addReplys, dels, add
 from mohuReply import mohudels, mohuaddReplys, mohuadd
+from plugins import everyDayDraw
 from readConfig import readConfig
 
 if __name__ == '__main__':
@@ -597,4 +598,6 @@ if __name__ == '__main__':
             else:
                 await bot.send(event, event.sender.member_name + '不是' + botName + '的master哦')
 
+
+    everyDayDraw.main(bot)
     bot.run()

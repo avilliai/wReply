@@ -313,22 +313,25 @@ if __name__ == '__main__':
                         elif str(replyssssss).endswith('.gif'):
                             await bot.send(event, Image(path='pictures\\dictPic\\' + replyssssss))
                         else:
-                            if '{me}' in replyssssss:
-                                replyssssss = replyssssss.replace("{me}", botName)
-                            else:
-                                pass
-                            if '{name}' in replyssssss:
-                                replyssssss = replyssssss.replace("{name}", str(event.sender.member_name))
-                            else:
-                                pass
-                            if '哥哥' in replyssssss:
-                                replyssssss = replyssssss.replace("哥哥", str(event.sender.member_name))
-                            else:
-                                pass
-                            if '{segment}' in replyssssss:
-                                replyssssss=replyssssss.replace("{segment}",',')
-                            else:
-                                pass
+                            try:
+                                if '{me}' in replyssssss:
+                                    replyssssss = replyssssss.replace("{me}", botName)
+                                else:
+                                    pass
+                                if '{name}' in replyssssss:
+                                    replyssssss = replyssssss.replace("{name}", str(event.sender.member_name))
+                                else:
+                                    pass
+                                if '哥哥' in replyssssss:
+                                    replyssssss = replyssssss.replace("哥哥", str(event.sender.member_name))
+                                else:
+                                    pass
+                                if '{segment}' in replyssssss:
+                                    replyssssss=replyssssss.replace("{segment}",',')
+                                else:
+                                    pass
+                            except:
+                                print('error')
                             await bot.send(event, replyssssss)
                         return
                 # 没有匹配的词
@@ -353,22 +356,25 @@ if __name__ == '__main__':
                             elif str(replyssssss).endswith('.gif'):
                                 await bot.send(event, Image(path='pictures\\dictPic\\' + replyssssss))
                             else:
-                                if '{me}' in replyssssss:
-                                    replyssssss = replyssssss.replace("{me}", botName)
-                                else:
-                                    pass
-                                if '{name}' in replyssssss:
-                                    replyssssss = replyssssss.replace("{name}", str(event.sender.member_name))
-                                else:
-                                    pass
-                                if '哥哥' in replyssssss:
-                                    replyssssss = replyssssss.replace("哥哥", str(event.sender.member_name))
-                                else:
-                                    pass
-                                if '{segment}' in replyssssss:
-                                    replyssssss = replyssssss.replace("{segment}", ',')
-                                else:
-                                    pass
+                                try:
+                                    if '{me}' in replyssssss:
+                                        replyssssss = replyssssss.replace("{me}", botName)
+                                    else:
+                                        pass
+                                    if '{name}' in replyssssss:
+                                        replyssssss = replyssssss.replace("{name}", str(event.sender.member_name))
+                                    else:
+                                        pass
+                                    if '哥哥' in replyssssss:
+                                        replyssssss = replyssssss.replace("哥哥", str(event.sender.member_name))
+                                    else:
+                                        pass
+                                    if '{segment}' in replyssssss:
+                                        replyssssss = replyssssss.replace("{segment}", ',')
+                                    else:
+                                        pass
+                                except:
+                                    print('error')
                                 await bot.send(event, replyssssss)
                             return
                     likeindex = likeindex - 3

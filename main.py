@@ -335,11 +335,11 @@ if __name__ == '__main__':
                             await bot.send(event, replyssssss)
                         return
                 # 没有匹配的词
-                likeindex = likeindex - 2
+                likeindex = likeindex - 1
         else:
             whetherReply = random.randint(0, 100)
             #设置回复几率
-            if whetherReply > 86:
+            if whetherReply > 94:
                 #最低相似度
                 while likeindex > replypro:
                     for i in mohuKeys:
@@ -377,7 +377,7 @@ if __name__ == '__main__':
                                     print('error')
                                 await bot.send(event, replyssssss)
                             return
-                    likeindex = likeindex - 3
+                    likeindex = likeindex - 2
 
 
     # 取消注释开放私聊

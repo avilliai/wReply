@@ -292,7 +292,7 @@ if __name__ == '__main__':
         global superDict
         global botName
         global replypro
-        likeindex = 99#初始匹配相似度
+        likeindex = 100#初始匹配相似度
         if At(bot.qq) in event.message_chain:
             getStr=str(event.message_chain).replace('@3377428814 ','')
 
@@ -339,9 +339,9 @@ if __name__ == '__main__':
         else:
             whetherReply = random.randint(0, 100)
             #设置回复几率
-            if whetherReply > 94:
+            if whetherReply > replypro:
                 #最低相似度
-                while likeindex > replypro:
+                while likeindex > 55:
                     for i in mohuKeys:
                         # 获取本次循环中消息和词库相似度，用相似度作为key
                         likeM = fuzz.partial_ratio(str(event.message_chain), i)

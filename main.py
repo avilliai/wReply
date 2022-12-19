@@ -377,7 +377,7 @@ if __name__ == '__main__':
                                     print('error')
                                 await bot.send(event, replyssssss)
                             return
-                    likeindex = likeindex - 2
+                    likeindex = likeindex - 1
 
 
     # 取消注释开放私聊
@@ -422,7 +422,7 @@ if __name__ == '__main__':
                         await bot.send(event, replyssssss)
                     return
             # 没有匹配的词
-            likeindex = likeindex - 2'''
+            likeindex = likeindex - 1'''
 
 
 

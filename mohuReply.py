@@ -8,6 +8,7 @@ import json
 #可以优化，bot.py中增加方式已经更新，但我懒得改
 #import openpyxl
 #from fuzzywuzzy import fuzz
+import openpyxl
 
 
 def mohuaddReplys(ass):
@@ -34,6 +35,14 @@ def mohuaddReplys(ass):
         dict[messageS[0]] = [messageS[1], ]
         #print(dict)
     #重新写入
+
+    #写入excel
+    wb = openpyxl.load_workbook("Config/词库.xlsx")
+    sheet = wb.active
+    sheet.append([messageS[0], messageS[1]])  # 插入一行数据
+    wb.save("Config/词库.xlsx")  # 保存,传入原文件则在
+
+
 
     #print(dict)
     js = json.dumps(dict)

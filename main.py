@@ -1,6 +1,8 @@
 import json
 import random
+import sys
 
+import os
 from fuzzywuzzy import fuzz,process
 from mirai import Mirai, FriendMessage, WebSocketAdapter,GroupMessage
 from mirai import Image, Voice
@@ -11,10 +13,11 @@ from easyReply import addReplys, dels, add
 from mohuReply import mohudels, mohuaddReplys, mohuadd
 from plugins import everyDayDraw
 from readConfig import readConfig
+from superDict import importDict
 
 if __name__ == '__main__':
 
-    bot = Mirai(3552663628, adapter=WebSocketAdapter(
+    bot = Mirai(3377428814, adapter=WebSocketAdapter(
         verify_key='1234567890', host='localhost', port=23456
     ))
 
@@ -603,6 +606,25 @@ if __name__ == '__main__':
                         file.write(i)
             else:
                 await bot.send(event, event.sender.member_name + '不是' + botName + '的master哦')
+    @bot.on(GroupMessage)
+    async def restarts(event: GroupMessage):
+        if str(event.message_chain)=='更新词库' and str(event.sender.id)==master:
+            importDict(1)
+            importDict(2)
+            file = open('Config\\dict.txt', 'r')
+            js = file.read()
+            global dict
+            dict = json.loads(js)
+            print('已读取字典')
+
+            file = open('Config\\superDict.txt', 'r')
+            jss = file.read()
+            global superDict
+            superDict = json.loads(jss)
+            global mohuKeys
+            mohuKeys = superDict.keys()
+            print('已读取模糊匹配字典')
+            await bot.send(event, '已更新')
 
 
     everyDayDraw.main(bot)

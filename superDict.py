@@ -5,9 +5,12 @@ import openpyxl
 from openpyxl import load_workbook
 
 #此方法用于更新词库
-def importDict():
+def importDict(mode):
     #xlsxPath = 'D:\Mirai\YirisVoiceGUI\PythonPlugins\Config\可爱系二次元bot词库1.5万词V1.1.xlsx'
-    xlsxPath = 'Config\词库.xlsx'
+    if mode==1:
+        xlsxPath = 'Config\词库.xlsx'
+    else:
+        xlsxPath = 'Config\完全匹配.xlsx'
     # 第一步打开工作簿
     wb = openpyxl.load_workbook(xlsxPath)
     # 第二步选取表单
@@ -20,13 +23,16 @@ def importDict():
 
 
     all_row_dict = []
+
     #当你需要向已有词库导入时取消注释
-    fileaa = open('Config\\superDict.txt', 'r')
+    '''fileaa = open('Config\\superDict.txt', 'r')
     js1 = fileaa.read()
     newDict = json.loads(js1)
-    print('已读取现存字典')
-    #新建词库，当你需要向已有词库导入时，注释下面这一行
-    #newDict={}
+    print('已读取现存字典')'''
+
+    #新建词库，当你需要新建词库时取消注释
+    newDict={}
+
     # 遍历出除了第一行的其他行
     for a_row in rows_data:
         the_row_data = [cell.value for cell in a_row]
@@ -35,9 +41,13 @@ def importDict():
         #print(row_dict)
         all_row_dict.append(row_dict)
     for i in all_row_dict:
-        key=i.get('问题')#表格第一列列名
-        #第二列列名
-        value = i.get('回复(把{me}替换成ai对自己的称呼，例如ai的名字(推荐)、我、咱等等，把{name}替换为ai对聊天对象的称呼，根据{segment}切分为多次发送的句子)')
+        if mode==1:
+            key=i.get('问题')#表格第一列列名
+            #第二列列名
+            value = i.get('回复(把{me}替换成ai对自己的称呼，例如ai的名字(推荐)、我、咱等等，把{name}替换为ai对聊天对象的称呼，根据{segment}切分为多次发送的句子)')
+        else:
+            key=i.get('key')
+            value=i.get('value')
 
         if (key in newDict):
             replyValue=newDict.get(key)
@@ -53,7 +63,10 @@ def importDict():
         #print('key:'+key+' '+'value:'+value)
     print(newDict)
     js = json.dumps(newDict)
-    file = open('Config\superDict.txt', 'w')
+    if mode==1:
+        file = open('Config\superDict.txt', 'w')
+    else:
+        file = open('Config\Dict.txt', 'w')
     file.write(js)
     file.close()
 
@@ -62,4 +75,5 @@ def importDict():
 
 
 if __name__ == '__main__':
-    importDict()
+    importDict(1)
+    importDict(2)

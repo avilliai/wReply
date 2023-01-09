@@ -3,7 +3,7 @@ import random
 import sys
 
 import json
-
+import openpyxl
 
 #可以优化，bot.py中增加方式已经更新，但我懒得改
 #import openpyxl
@@ -33,6 +33,12 @@ def addReplys(ass):
         dict[messageS[0]] = [messageS[1],]
         #print(dict)
     #重新写入
+
+
+    wb = openpyxl.load_workbook("Config\\完全匹配.xlsx")
+    sheet=wb.active
+    sheet.append([messageS[0], messageS[1]])  # 插入一行数据
+    wb.save("Config\\完全匹配.xlsx")  # 保存,传入原文件则在
 
     #print(dict)
     js = json.dumps(dict)

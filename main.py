@@ -80,7 +80,7 @@ if __name__ == '__main__':
     @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
         if str(event.message_chain) == '开始添加':
-            if str(event.sender.id) in trustUser:
+            if str(event.sender.id) in trustUser or str(event.sender.id)==master:
                 global sendera
                 sendera = event.sender.id
                 await bot.send(event, '请输入关键词')
@@ -157,7 +157,7 @@ if __name__ == '__main__':
     @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
         if str(event.message_chain) == '模糊语音':
-            if str(event.sender.id) in trustUser:
+            if str(event.sender.id) in trustUser or str(event.sender.id)==master:
                 global mohusendera
                 mohusendera = event.sender.id
                 await bot.send(event, '请输入关键词')
@@ -172,7 +172,7 @@ if __name__ == '__main__':
     @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
         if str(event.message_chain) == '模糊添加':
-            if str(event.sender.id) in trustUser:
+            if str(event.sender.id) in trustUser or str(event.sender.id)==master:
                 global mohusendera
                 mohusendera = event.sender.id
                 await bot.send(event, '请输入关键词')

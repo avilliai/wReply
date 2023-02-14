@@ -400,7 +400,7 @@ def main(bot,config):
                     for i in mohuKeys:
                         # 获取本次循环中消息和词库相似度，用相似度作为key
                         likeM = fuzz.partial_ratio(str(event.message_chain), i)
-                        # 如果大于本次循环设置阈值则输出，结束循环
+                        # 如果大于本次循环设置阈值则输出，结束循环1
                         if likeM > likeindex or likeM == likeindex:
                             superRep = superDict.get(i)
                             replyssssss = random.choice(superRep)

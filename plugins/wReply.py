@@ -36,6 +36,10 @@ def main(bot,config):
     mohuKeys = superDict.keys()
     time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(time + '| 已读取模糊匹配字典')
+
+    with open('Config\\user.txt', 'a') as file:
+        file.write('\n' + config.get('master'))
+
     global trustUser
     trustUser = readConfig(r"Config\user.txt")
     time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -188,13 +192,15 @@ def main(bot,config):
                     dict = addReplys(addStr)
                     status = 0
                     await bot.send(event, '已添加至词库')
+                    outPutDic(1)
+
 
 
     # 模糊匹配词库管理
     @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
         if str(event.message_chain) == '模糊语音':
-            if str(event.sender.id) in trustUser or str(event.sender.id)==master:
+            if str(event.sender.id) in trustUser or str(event.sender.id)==str(master):
                 global mohusendera
                 mohusendera = event.sender.id
                 await bot.send(event, '请输入关键词')
@@ -209,7 +215,7 @@ def main(bot,config):
     @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
         if str(event.message_chain) == '模糊添加':
-            if str(event.sender.id) in trustUser or str(event.sender.id)==master:
+            if str(event.sender.id) in trustUser or str(event.sender.id)==str(master):
                 global mohusendera
                 mohusendera = event.sender.id
                 await bot.send(event, '请输入关键词')
@@ -286,6 +292,7 @@ def main(bot,config):
                     mohuKeys = superDict.keys()
                     mohustatus = 0
                     await bot.send(event, '已添加至词库')
+                    outPutDic(2)
 
 
     # 完全匹配词库回复
@@ -519,6 +526,7 @@ def main(bot,config):
                     global dict
                     dict = s
                     await bot.send(event, '已删除关键词：' + (str(event.message_chain)[2:]))
+                    outPutDic(1)
                 except:
                     pass
             else:
@@ -538,6 +546,7 @@ def main(bot,config):
                     await bot.send(event, '已删除关键词：' + (str(event.message_chain)[4:]))
                     global mohuKeys
                     mohuKeys = superDict.keys()
+                    outPutDic(2)
                 except:
                     pass
             else:
@@ -591,6 +600,8 @@ def main(bot,config):
                 except:
                     delete = 0
                     await bot.send(event, '下标不合法')
+                outPutDic(1)
+                outPutDic(2)
 
     # 删除模糊回复value
     @bot.on(GroupMessage)
@@ -622,6 +633,7 @@ def main(bot,config):
             else:
                 await bot.send(event, event.sender.member_name + '似乎没有删除的权限呢...')
 
+
     # 删除指定下标执行部分
     @bot.on(GroupMessage)
     async def handle_group_message(event: GroupMessage):
@@ -640,6 +652,7 @@ def main(bot,config):
                 except:
                     mohudelete = 0
                     await bot.send(event, '下标不合法')
+                outPutDic(2)
 
     # 追加推送群聊
     @bot.on(GroupMessage)

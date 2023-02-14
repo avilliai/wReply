@@ -19,7 +19,7 @@ def importDict(mode):
     rows_data = list(sheet.rows)
     # 获取表单的表头信息(第一行)，也就是列表的第一个元素
     titles = [title.value for title in rows_data.pop(0)]
-    print(titles)
+    #print(titles)
 
 
     all_row_dict = []
@@ -61,7 +61,7 @@ def importDict(mode):
         else:
             newDict[key] = [value,]
         #print('key:'+key+' '+'value:'+value)
-    print(newDict)
+    #print(newDict)
     js = json.dumps(newDict)
     if mode==1:
         file = open('Config\superDict.txt', 'w')

@@ -41,9 +41,13 @@ def importDict(mode):
         #print(row_dict)
         all_row_dict.append(row_dict)
     for i in all_row_dict:
-
-        key=i.get('key')
-        value=i.get('value')
+        if mode==1:
+            key=i.get('问题')#表格第一列列名
+            #第二列列名
+            value = i.get('回复(把{me}替换成ai对自己的称呼，例如ai的名字(推荐)、我、咱等等，把{name}替换为ai对聊天对象的称呼，根据{segment}切分为多次发送的句子)')
+        else:
+            key=i.get('key')
+            value=i.get('value')
 
         if (key in newDict):
             replyValue=newDict.get(key)
@@ -68,7 +72,7 @@ def importDict(mode):
 
 def clearSheet(a):
     i=0
-    if a==1:
+    if a!=1:
         filename = 'Config/词库.xlsx'
     else:
         filename= 'Config/完全匹配.xlsx'
@@ -81,6 +85,7 @@ def clearSheet(a):
         i+=1
         print('clear')
 def outPutDic(a):
+    clearSheet(a)
     if a==1:
         filename = 'Config/完全匹配.xlsx'
         file = open('Config\\dict.txt', 'r')
@@ -89,7 +94,6 @@ def outPutDic(a):
         Keys = dict.keys()
         print('已读取字典')
     else:
-
 
         filename = 'Config/词库.xlsx'
         file = open('Config\\superDict.txt', 'r')
@@ -100,31 +104,27 @@ def outPutDic(a):
 
 
 
+
+
+
+
     wb = openpyxl.load_workbook(filename)
     sheet = wb.active
     sheet.append(['key', 'value'])  # 插入一行数据
-    wb.save(filename)  # 保存,传入原文件则在
-
     for d in Keys:
         key=d
         values=dict.get(d)
 
         for value in values:
-            wb = openpyxl.load_workbook(filename)
-            print(str(key)+str(value))
-            sheet = wb.active
 
+            #print(str(key)+str(value))
 
             sheet.append([key, value])  # 插入一行数据
-            wb.save(filename)  # 保存,传入原文件则在
+    wb.save(filename)  # 保存,传入原文件则在
 
 
 
 
 if __name__ == '__main__':
-    importDict(1)#从excel导入词库
-    #importDict(2)
-    #clearSheet(1)
-    #clearSheet(2)
-    #outPutDic(1)#导出到excel
-    #outPutDic(2)
+    importDict(1)
+    importDict(2)

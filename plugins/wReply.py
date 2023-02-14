@@ -187,7 +187,7 @@ def main(bot,config):
                         value = str(event.message_chain)
                     global dict
                     time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    print(time + '| 完全匹配词库添加语音-----> ' + value)
+                    print(time + '| 完全匹配词库添加回复-----> '+ key+'|  '+ value)
                     addStr = '添加' + key + '#' + value
                     dict = addReplys(addStr)
                     status = 0

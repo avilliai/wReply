@@ -3,13 +3,14 @@
 
 希望使用更加便捷的词库管理可以尝试铃心自定义和Dice溯洄，论坛也有大佬的自定义回复插件。此项目作为哥们一边学一边写的项目，不是很成熟
 
-
+  目前使用的[词库](https://mirai.mamoe.net/topic/1829/%E5%BC%BA%E5%A4%A7%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%85%83%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%8D%E5%BA%932w-%E8%AF%8D%E6%9D%A1-%E4%B8%8D%E5%AE%9A%E6%9C%9F%E6%9B%B4%E6%96%B0)来自neko002佬
+  
 # 需要
   python环境(我用的3.9.0,你可以从release下载它)
   
-  [mirai-api-http](https://github.com/project-mirai/mirai-api-http)，并配置，[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml)，配置文件的路径为mcl根目录\config\net.mamoe.mirai-api-http\setting.yml
+  安装[mirai-api-http](https://github.com/project-mirai/mirai-api-http)(就是把它放进mcl根目录\plugins文件夹，然后重启mcl.cmd)，并配置，[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml)(你可以用我的配置文件覆盖你自己的配置文件)，配置文件的路径为mcl根目录\config\net.mamoe.mirai-api-http\setting.yml
   
-  目前使用的[词库](https://mirai.mamoe.net/topic/1829/%E5%BC%BA%E5%A4%A7%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%85%83%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%8D%E5%BA%932w-%E8%AF%8D%E6%9D%A1-%E4%B8%8D%E5%AE%9A%E6%9C%9F%E6%9B%B4%E6%96%B0)来自neko002佬
+
 # how to use
   1.克隆仓库到本地或下载release，安装python(记得第一步勾选add to path)
   

@@ -19,7 +19,7 @@
   
   如果你用了上面的[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml),则只需修改3377428814为你bot的qq;
   
-  继续向下划拉能看到botName变量，改成你bot的名字，master改成你的QQ，replypro=90意思是在群内不艾特时回复的概率是90%(艾特必定会执行匹配)
+  修改config.json中的botQQ,master
   
   3.运行main.py
   

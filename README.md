@@ -8,7 +8,9 @@
 # 需要
   python环境(我用的3.9.0,你可以从release下载它)
   
-  安装[mirai-api-http](https://github.com/project-mirai/mirai-api-http)(就是把它放进mcl根目录\plugins文件夹，然后重启mcl.cmd)，并配置，[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml)(你可以用我的配置文件覆盖你自己的配置文件)，配置文件的路径为mcl根目录\config\net.mamoe.mirai-api-http\setting.yml
+  安装[mirai-api-http](https://github.com/project-mirai/mirai-api-http)(就是把它放进mcl根目录\plugins文件夹，然后重启mcl.cmd)
+  
+  并配置，[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml)(你可以用我的配置文件 替换 你自己的配置文件)，配置文件的路径为mcl根目录\config\net.mamoe.mirai-api-http\setting.yml
   
 
 # how to use

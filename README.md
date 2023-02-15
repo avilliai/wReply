@@ -11,15 +11,13 @@
   
   目前使用的[词库](https://mirai.mamoe.net/topic/1829/%E5%BC%BA%E5%A4%A7%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%85%83%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%8D%E5%BA%932w-%E8%AF%8D%E6%9D%A1-%E4%B8%8D%E5%AE%9A%E6%9C%9F%E6%9B%B4%E6%96%B0)来自neko002佬
 # how to use
-  1.克隆仓库到本地
+  1.克隆仓库到本地或下载release，安装python(记得第一步勾选add to path)
   
-  2.打开cmd，运行pip install -r requirements.txt
+  2.进入main.py所在的目录打开cmd，运行pip install -r requirements.txt
   
-  3.修改main.py中的qq,port,key qq是你bot的qq，vertify_key和 port参考你的mirai-api-http配置文件，
+  3.修改config.json中的qq,port,key qq是你bot的qq，vertify_key和 port参考你的mirai-api-http配置文件，
   
-  如果你用了上面的[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml),config.json中的key和port就别动了
-  
-  修改config.json中的botQQ,master
+  如果你用了上面的[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml),config.json中的key和port就别动了,修改botQQ,master，botName即可
   
   3.运行main.py
   

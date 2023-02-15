@@ -17,7 +17,7 @@
   
   3.修改main.py中的qq,port,key qq是你bot的qq，vertify_key和 port参考你的mirai-api-http配置文件，
   
-  如果你用了上面的[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml),则只需修改3377428814为你bot的qq;
+  如果你用了上面的[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml),config.json中的key和port就别动了
   
   修改config.json中的botQQ,master
   

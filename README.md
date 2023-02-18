@@ -57,9 +57,13 @@
   
   del#key
   
-  *添加语音回复*
+  **添加语音回复(建议部署[另一个项目](https://mirai.mamoe.net/topic/1782/%E8%AF%AD%E9%9F%B3%E7%94%9F%E6%88%90%E5%8A%9F%E8%83%BD-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%9E%E5%A4%8D-%E6%94%AF%E6%8C%81%E8%AE%BE%E7%BD%AE%E8%AF%AD%E9%9F%B3%E5%9B%9E%E5%A4%8D%E4%B8%8E%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9E%8B))**
   
-  详见另一个帖子
+  添加语音
+  
+  模糊语音
+  
+  删除操作与上面相同
   
   **授权机制**
   

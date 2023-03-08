@@ -41,13 +41,9 @@ def importDict(mode):
         #print(row_dict)
         all_row_dict.append(row_dict)
     for i in all_row_dict:
-        if mode==1:
-            key=i.get('问题')#表格第一列列名
-            #第二列列名
-            value = i.get('回复(把{me}替换成ai对自己的称呼，例如ai的名字(推荐)、我、咱等等，把{name}替换为ai对聊天对象的称呼，根据{segment}切分为多次发送的句子)')
-        else:
-            key=i.get('key')
-            value=i.get('value')
+
+        key=i.get('key')
+        value=i.get('value')
 
         if (key in newDict):
             replyValue=newDict.get(key)

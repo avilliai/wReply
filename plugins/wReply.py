@@ -37,13 +37,15 @@ def main(bot,config):
     time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(time + '| 已读取模糊匹配字典')
 
-    with open('Config\\user.txt', 'a') as file:
-        file.write('\n' + config.get('master'))
+
 
     global trustUser
     trustUser = readConfig(r"Config\user.txt")
     time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(time + '| 已读取信任用户')
+    if int(config.get('master')) not in trustUser:
+        with open('Config\\user.txt', 'a') as file:
+            file.write('\n' + config.get('master'))
 
     file = open('Config\\userNamea.txt', 'r')
     js = file.read()

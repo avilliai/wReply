@@ -174,14 +174,14 @@ def main(bot,config):
                         status = 0
                 if baner != 1:
                     # 语音生成详见另一个帖子,配置成功后取消此行注释
-                    if voiceMode == 1:
+                    '''if voiceMode == 1:
                         ranpath = random_str()
                         path ='plugins/voices/VoiceReply/' + ranpath + '.wav'
                         tex = '[JA]' + translate(str(event.message_chain)) + '[JA]'
                         voiceGenerate(tex, path)
                         value = ranpath + '.wav'
-                        voiceMode=0
-                    elif event.message_chain.count(Image) == 1:
+                        voiceMode=0'''
+                    if event.message_chain.count(Image) == 1:
                         lst_img = event.message_chain.get(Image)
                         path = lst_img[0].url
                         imgname = dict_download_img(path)
@@ -271,14 +271,14 @@ def main(bot,config):
                         mohukey = ''
                         mohustatus = 0
                 if baner != 1:
-                    if mohuvoiceMode == 1:
+                    '''if mohuvoiceMode == 1:
                         ranpath = random_str()
                         path ='plugins/voices/VoiceReply/' + ranpath + '.wav'
                         tex = '[JA]' + translate(str(event.message_chain)) + '[JA]'
                         voiceGenerate(tex, path)
                         value = ranpath + '.wav'
-                        mohuvoiceMode=0
-                    elif event.message_chain.count(Image) == 1:
+                        mohuvoiceMode=0'''
+                    if event.message_chain.count(Image) == 1:
                         lst_img = event.message_chain.get(Image)
                         path = lst_img[0].url
                         imgname = dict_download_img(path)

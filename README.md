@@ -3,23 +3,26 @@
 
 希望使用更加便捷的词库管理可以尝试铃心自定义和Dice溯洄，论坛也有大佬的自定义回复插件。此项目作为哥们一边学一边写的项目，不是很成熟
 
-
-# 需要
-  python环境(我用的3.9.0)
-  
-  [mirai-api-http](https://github.com/project-mirai/mirai-api-http)，并配置，[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml)
-  
   目前使用的[词库](https://mirai.mamoe.net/topic/1829/%E5%BC%BA%E5%A4%A7%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%85%83%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%8D%E5%BA%932w-%E8%AF%8D%E6%9D%A1-%E4%B8%8D%E5%AE%9A%E6%9C%9F%E6%9B%B4%E6%96%B0)来自neko002佬
+  
+# 需要
+  python环境(我用的3.9.0,你可以从release下载它)
+  
+  安装[mirai-api-http](https://github.com/project-mirai/mirai-api-http)(就是把它放进mcl根目录\plugins文件夹，然后重启mcl.cmd)
+  
+  并配置，[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml)(你可以用我的配置文件 替换 你自己的配置文件)
+  
+  配置文件的路径为mcl根目录\config\net.mamoe.mirai-api-http\setting.yml
+  
+
 # how to use
-  1.克隆仓库到本地
+  1.克隆仓库到本地或下载release，安装python(记得第一步勾选add to path)
   
-  2.打开cmd，运行pip install -r requirements.txt
+  2.进入main.py所在的目录打开cmd，运行pip install -r requirements.txt
   
-  3.修改main.py中的qq,port,key qq是你bot的qq，vertify_key和 port参考你的mirai-api-http配置文件，
+  3.修改config.json中的qq,port,key qq是你bot的qq，vertify_key和 port参考你的mirai-api-http配置文件，
   
-  如果你用了上面的[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml),则只需修改3377428814为你bot的qq;
-  
-  继续向下划拉能看到botName变量，改成你bot的名字，master改成你的QQ，replypro=90意思是在群内不艾特时回复的概率是90%(艾特必定会执行匹配)
+  如果你用了上面的[配置文件示例](https://github.com/avilliai/wReply/blob/master/setting.yml),config.json中的key和port就别动了,修改botQQ,master，botName即可
   
   3.运行main.py
   
@@ -35,7 +38,7 @@
   
   导入词库  此命令用于将excel表格内容导入txt
   
-  导出词库  此命令用于将txt导出到excel表格
+  导出词库  此命令用于将txt导出到excel表格（一般会自动执行）
   
   
   **管理模糊匹配词库指令**
@@ -54,9 +57,13 @@
   
   del#key
   
-  *添加语音回复*
+  **如希望添加语音回复建议部署[语音生成合并版](https://mirai.mamoe.net/topic/1782/%E8%AF%AD%E9%9F%B3%E7%94%9F%E6%88%90%E5%8A%9F%E8%83%BD-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%9E%E5%A4%8D-%E6%94%AF%E6%8C%81%E8%AE%BE%E7%BD%AE%E8%AF%AD%E9%9F%B3%E5%9B%9E%E5%A4%8D%E4%B8%8E%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9E%8B)**
   
-  详见另一个帖子
+  添加语音
+  
+  模糊语音
+  
+  删除操作与上面相同
   
   **授权机制**
   

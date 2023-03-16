@@ -6,8 +6,8 @@ import sys
 import json
 import openpyxl
 
-#可以优化，bot.py中增加方式已经更新，但我懒得改
-#import openpyxl
+# 可以优化，bot.py中增加方式已经更新，但我懒得改
+# import openpyxl
 
 
 def addReplys(ass):

@@ -10,7 +10,7 @@ adapterSettings:
   ## 详情看 http adapter 使用说明 配置
   http:
     host: localhost
-    port: 23456 # 端口
+    port: 23457 # 端口
     cors: [*]
 
   ## 详情看 websocket adapter 使用说明 配置
